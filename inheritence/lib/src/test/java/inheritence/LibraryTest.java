@@ -53,4 +53,85 @@ class LibraryTest {
         assertEquals(expected, sut.comments);
         assertEquals(starExpection, sut.stars);
     }
+
+    @Test void shopCreation(){
+        String description = "A great place to find deals on arts supplies";
+        Shop sut = new Shop("AC Moore", description, 3);
+
+        String actual = sut.ToString();
+        String expected = "AC Moore is A great place to find deals on arts supplies This shop has a price range of $$$";
+        assertEquals(expected, actual);
+    }
+
+    @Test void theaterAddmovie(){
+        Theater sut = new Theater("AMC");
+
+        sut.addMovie("Wakanda Forever");
+        sut.addMovie("Black Adam");
+        sut.addMovie("ENDS");
+        sut.addMovie("Neon Genesis");
+
+        ArrayList<String> expected = new ArrayList<>();
+        expected.add("Wakanda Forever");
+        expected.add("Black Adam");
+        expected.add("ENDS");
+        expected.add("Neon Genesis");
+
+        assertEquals(expected, sut.movies);
+    }
+
+    @Test void theaterRemovemovie(){
+        Theater sut = new Theater("AMC");
+
+        sut.addMovie("Wakanda Forever");
+        sut.addMovie("Black Adam");
+        sut.addMovie("ENDS");
+        sut.addMovie("Neon Genesis");
+
+        sut.removeMovie("ENDS");
+
+        ArrayList<String> expected = new ArrayList<>();
+        expected.add("Wakanda Forever");
+        expected.add("Black Adam");
+        expected.add("Neon Genesis");
+
+        assertEquals(expected, sut.movies);
+    }
+
+    @Test void writeReviewShop(){
+        String comment = "A gerneral goods store in Merr for your adventures.";
+        Shop sut = new Shop("DeathCasm", comment, 5);
+        String review = "Garg swindled me 10gp for a worthless long sword.";
+        String review1 = "Garg Gave me a cursed item and won't accept a return. Now my eyes turn black and it's scaring the children.";
+        String review2 = "Garg is the best he keeps trying to gamble with me but i always win.";
+
+
+        sut.addReview(2, review);
+        sut.addReview(1, review1);
+        sut.addReview(6, review2);
+
+        ArrayList<String> expected = new ArrayList<>();
+        expected.add("2 stars - Garg swindled me 10gp for a worthless long sword.");
+        expected.add("1 stars - Garg Gave me a cursed item and won't accept a return. Now my eyes turn black and it's scaring the children.");
+        expected.add("6 stars - Garg is the best he keeps trying to gamble with me but i always win.");
+
+        assertEquals(expected, sut.comments);
+    }
+
+    @Test void theaterReviewFormoviesAndNonMovie(){
+        Theater sut = new Theater("FatCats");
+
+        sut.addReview(5, "Loved the $2 tuesday deal.", "Cats VS Dogs");
+        sut.addReview(3, "Not the cleanest theater.", "Chandra return");
+        sut.addReview(4, "Great deal on snacks but theater was not well kept.", "Ulomogs Crusher");
+        sut.addReview(1, "Staff were rude. Floor was sticky.", "Ajani's Pride");
+
+        ArrayList<String> expected = new ArrayList<>();
+        expected.add("5 stars - Cats VS Dogs - Loved the $2 tuesday deal.");
+        expected.add("3 stars - Chandra return - Not the cleanest theater.");
+        expected.add("4 stars - Ulomogs Crusher - Great deal on snacks but theater was not well kept.");
+        expected.add("1 stars - Ajani's Pride - Staff were rude. Floor was sticky.");
+
+        assertEquals(expected, sut.comments);
+    }
 }

@@ -7,9 +7,19 @@ The next is an addReview method which extends the review class. the Review class
 the addReview will take this review and set it to this particular restaurant as well as update the restaurants overall star rating to the average of all stars in the comments.
 last method we have is a ToString method. When this method is called it will give you a brief description containing the restaurants name, average star rating, and the price value of the restaurant.
 
+Added theaters as a reviewable and creatable class.
+Added Shops as a reviewable and creatable class.
+Updates to Reviews based on if you wanted to add the movie you saw while at the theater.
+
 
 ## Tests
 
 there are a couple test to test the methods. First test is to make sure the price UI method is working properly first by testing that when 4 is entered you get and equivalent number of dollar signs, the second test test the error response when a user enter a number higher than  5.
 the next test will test that when you set up a restaurant the ToString method will return the correct string and information. 
 the next test will test making reviews and checks that you can add a single review and multiple review to the restraint and that it will calculate the correct average number of stars.
+
+tests weather a shop can be created successfully
+tests weather you can add Movies to the currently playing array list of movies at that theater
+tests for the removal of movies from the array list
+tests for if a review can be written about the shop and restaurant
+test weather the user can add a movie to their theater review
